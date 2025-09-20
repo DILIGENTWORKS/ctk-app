@@ -1,0 +1,56 @@
+<div class="container section">
+  <h2 class="title-bar">Contact Us</h2>
+  <div class="contact-grid">
+    <!-- Left: Contact form -->
+    <div>
+      <p>Have questions? Send us a message and we'll get back to you.</p>
+      <form class="form" (ngSubmit)="submit()" #f="ngForm" novalidate>
+        <input name="name" [(ngModel)]="model.name" #name="ngModel" placeholder="Your name" required [ngClass]="{ invalid: name.invalid && (name.dirty || name.touched || f.submitted) }" />
+        <div class="hint" *ngIf="name.invalid && (name.dirty || name.touched || f.submitted)">Name is required.</div>
+
+        <input name="email" [(ngModel)]="model.email" #email="ngModel" placeholder="Your email" type="email" inputmode="email" autocomplete="email"
+               pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" aria-describedby="emailHint"
+               required [ngClass]="{ invalid: email.invalid && (email.dirty || email.touched || f.submitted) }" />
+        <div id="emailHint" class="hint" *ngIf="email.errors && (email.dirty || email.touched || f.submitted)">
+          <ng-container *ngIf="email.errors['required']">Email is required.</ng-container>
+          <ng-container *ngIf="email.errors['email'] || email.errors['pattern']">Please enter a valid email address (e.g., name&#64;example.com).</ng-container>
+        </div>
+
+        <textarea name="message" [(ngModel)]="model.message" #message="ngModel" placeholder="Your message" rows="5" required maxlength="1000" [ngClass]="{ invalid: message.invalid && (message.dirty || message.touched || f.submitted) }"></textarea>
+        <div class="hint" *ngIf="message.errors && (message.dirty || message.touched || f.submitted)">
+          <ng-container *ngIf="message.errors['required']">Message is required.</ng-container>
+          <ng-container *ngIf="message.errors['maxlength']">Message must be at most 1000 characters.</ng-container>
+        </div>
+        <div class="counter">{{ (model.message?.length || 0) }} / 1000</div>
+
+        <button class="button title-bar title-button" [disabled]="submitting || !f.form.valid" type="submit">
+          <svg class="btn-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3 11.5l17-8-7.5 17-1.8-6.2L3 11.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          {{ submitting ? 'Sending…' : 'Send Message' }}
+        </button>
+        <div *ngIf="submitted" class="form-success">Thank you! Your message has been sent.</div>
+        <div *ngIf="error" class="form-error">{{ error }}</div>
+      </form>
+    </div>
+
+    <!-- Right: Registered address and School place -->
+    <aside class="contact-aside">
+      <div class="contact-card">
+        <h3 class="title-bar">Registered Address</h3>
+        <p>Panneerselvam Thangavel<br/>44 Leechcroft Road<br/>Wallington<br/>SM6 7JF</p>
+      </div>
+      <div class="contact-card">
+        <h3 class="title-bar">School Place</h3>
+        <p>Harris Academy Purley School<br/>Kendra Hall Road<br/>South Croydon<br/>CR2 6DT</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="map-wrap">
+    <h3>Find us</h3>
+    <div class="map-frame">
+      <iframe src="https://www.google.com/maps?q=Harris%20Academy%20Purley%2C%20Kendra%20Hall%20Road%2C%20South%20Croydon%20CR2%206DT&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</div>

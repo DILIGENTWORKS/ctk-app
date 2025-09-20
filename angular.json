@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json.schemastore.org/angular-cli",
+  "version": 1,
+  "defaultProject": "ctk-web",
+  "projects": {
+    "ctk-web": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ctk-web",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": [
+              "src/polyfills.ts"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",         
+              "src/assets/ctk/slider",              
+              "src/assets/ctk/logo",
+              { "glob": "CTKLOGO.jpg", "input": "../../ctk", "output": "assets/ctk/logo" }
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ctk-web:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ctk-web:build:production"
+            },
+            "development": {
+              "browserTarget": "ctk-web:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "7eb895b0-087c-48de-a924-11bdfdc6a160"
+  }
+}

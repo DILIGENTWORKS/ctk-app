@@ -1,0 +1,12 @@
+.title-bar.title-bar--light {
+  /* Match Forms "Note to new parents" callout palette */
+  background: linear-gradient(180deg, #f7fbff 0%, #f0f6ff 100%);
+  border-color: #cfe0ff;
+  color: #0f2f61; /* same text tone as callout */
+  box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset;
+}
+
+/* Optional: ensure quote card light title has a bit of separation if needed */
+.quote-card .title-bar--light {
+  margin-bottom: 0.5rem;
+}

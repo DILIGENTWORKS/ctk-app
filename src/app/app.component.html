@@ -1,0 +1,85 @@
+<header class="header">
+  <nav class="navbar">
+    <a class="logo" routerLink="/" aria-label="CTK Home">
+      <span class="logo-wrap">
+        <img src="assets/ctk/logo/CTKLOGO.jpg" alt="Croydon Tamizh Kazhagam" class="logo-img" />
+        <span class="logo-text">CROYDON TAMIZH KAZHAGAM</span>
+      </span>
+    </a>
+    <div class="menu">
+      <a routerLink="/">Home</a>
+      <div class="dropdown">
+        <a class="dropbtn" routerLink="/about" aria-haspopup="true" aria-expanded="false">About Us</a>
+        <div class="dropdown-menu" role="menu">
+          <a routerLink="/about/history" role="menuitem">Our History</a>
+          <a routerLink="/about/team" role="menuitem">Meet the Team</a>
+          <a routerLink="/about/fees" role="menuitem">Fees & Payments</a>
+          <a routerLink="/about/testimonials" role="menuitem">Testimonials</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a class="dropbtn" aria-haspopup="true" aria-expanded="false">News & Events</a>
+        <div class="dropdown-menu" role="menu">
+          <a routerLink="/news-events/term-dates" role="menuitem">Term Dates</a>
+          <a routerLink="/news-events/attendance-guideline" role="menuitem">Attendance Guideline</a>
+        </div>
+      </div>
+      <a routerLink="/forms">Forms</a>
+      <a routerLink="/contact">Contact Us</a>
+    </div>
+  </nav>
+</header>
+
+<router-outlet></router-outlet>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <!-- Removed old footer brand block per request -->
+
+    <div class="footer-col footer-sitemap">
+      <div class="footer-sitemap-grid">
+        <img src="assets/ctk/logo/white-ctk-logo.png" alt="CTK" class="footer-logo footer-logo--large" />
+        <h4 class="footer-sitemap-title">Sitemap</h4>
+        <ul>
+          <li><a routerLink="/">Home</a></li>
+          <li><a routerLink="/about">About Us</a></li>
+          <li><a routerLink="/news-events/term-dates">News & Events</a></li>
+          <li><a routerLink="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>About Us</h4>
+      <ul>
+        <li><a routerLink="/about/history">Our History</a></li>
+        <li><a routerLink="/about/team">Meet the team</a></li>
+        <li><a routerLink="/about/fees">Fee Structure</a></li>
+        <li><a routerLink="/about/testimonials">Testimonials</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>News & Events</h4>
+      <ul>
+        <li><a routerLink="/news-events/term-dates">Term Dates</a></li>
+        <li><a routerLink="/news-events/attendance-guideline">Attendance Guideline</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Get in Touch</h4>
+      <ul class="contact">
+        <li><a href="https://www.facebook.com/CroydonTamizhKazhagam/" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="mailto:info@croydontamizhkazhagam.org.uk">info&#64;croydontamizhkazhagam.org.uk</a></li>
+        <li>Harris Academy Purley, Kendra Hall Road, South Croydon CR2 6DT</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container bottom-row">
+      <div class="bottom-left">© {{ currentYear }} Croydon Tamizh Kazhagam. All Rights Reserved</div>
+      <div class="bottom-right">British Tamil Examination Board (BTEB) Accredited</div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,56 @@
+<div class="container section">
+  <h2 class="title-bar">Meet the Team</h2>
+
+  <!-- Category Filters -->
+  <div class="filters" role="tablist" aria-label="Team categories">
+    <button
+      *ngFor="let cat of categories"
+      class="filter-chip" 
+      [class.active]="activeCategory === cat"
+      (click)="setCategory(cat)"
+      type="button"
+      role="tab"
+      [attr.aria-selected]="activeCategory === cat"
+    >
+      {{ cat }}
+    </button>
+  </div>
+
+  <!-- Team Grid -->
+  <div class="team-grid" aria-live="polite">
+    <div class="team-card" *ngFor="let m of filteredMembers">
+      <button class="card-inner" type="button" (click)="openMember(m)" aria-haspopup="dialog" [attr.aria-label]="'Open details for ' + m.name">
+        <div class="avatar">
+          <img [src]="m.photo" [alt]="m.name" (error)="onImgError($event)">
+        </div>
+        <div class="info">
+          <h3 class="name">{{ m.name }}</h3>
+          <div class="badges">
+            <span class="badge">{{ m.role }}</span>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" *ngIf="selectedMember" role="dialog" aria-modal="true" [attr.aria-label]="selectedMember?.name">
+    <div class="modal-backdrop" (click)="closeMember()"></div>
+    <div class="modal-dialog" role="document">
+      <button class="modal-close" type="button" (click)="closeMember()" aria-label="Close">×</button>
+      <div class="modal-header title-bar title-bar--light">
+        <h3 class="name modal-title">{{ selectedMember?.name }}</h3>
+      </div>
+      <div class="modal-body profile-layout">
+        <div class="profile-photo">
+          <img [src]="selectedMember?.photo" [alt]="selectedMember?.name || 'Selected member'" (error)="onImgError($event)">
+        </div>
+        <div class="profile-bio">
+          <h4 class="role-heading">{{ selectedMember?.role }}</h4>
+          <p class="bio-text">{{ selectedMember?.bio }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
