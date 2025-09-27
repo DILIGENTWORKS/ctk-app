@@ -58,6 +58,45 @@ export default function Home() {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
+  // Stats animation
+  const statsRef = useRef<HTMLDivElement | null>(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const [students, setStudents] = useState(0);
+  const [teachers, setTeachers] = useState(0);
+  const [years, setYears] = useState(0);
+  const yearsSuffix = '+';
+  const target = { students: 130, teachers: 20, years: 10 };
+
+  useEffect(() => {
+    if (!statsRef.current || hasAnimated) return;
+    const el = statsRef.current;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting) {
+          // Animate counts over duration
+          const duration = 1200; // ms
+          const start = performance.now();
+          const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+          const tick = (now: number) => {
+            const prog = Math.min(1, (now - start) / duration);
+            const eased = easeOutCubic(prog);
+            setStudents(Math.round(target.students * eased));
+            setTeachers(Math.round(target.teachers * eased));
+            setYears(Math.round(target.years * eased));
+            if (prog < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+          setHasAnimated(true);
+          obs.disconnect();
+        }
+      },
+      { root: null, threshold: 0.3 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [hasAnimated]);
+
   return (
     <div>
       <Helmet>
@@ -130,7 +169,7 @@ export default function Home() {
               parents, friends and relatives.
             </p>
           </div>
-          <aside className="home-aside">
+          <aside className="home-aside" ref={statsRef}>
             <div className="aside-card paypal-card">
               <h3 className="title-bar">Pay or Donate</h3>
               <div className="paypal-inner">
@@ -153,7 +192,7 @@ export default function Home() {
                 </svg>
               </div>
               <div className="stat-right">
-                <span className="stat-number">130</span>
+                <span className="stat-number">{students}</span>
                 <span className="title-bar--sm">Students</span>
               </div>
             </div>
@@ -167,7 +206,7 @@ export default function Home() {
                 </svg>
               </div>
               <div className="stat-right">
-                <span className="stat-number">20</span>
+                <span className="stat-number">{teachers}</span>
                 <span className="title-bar--sm">Teachers</span>
               </div>
             </div>
@@ -181,7 +220,7 @@ export default function Home() {
                 </svg>
               </div>
               <div className="stat-right">
-                <span className="stat-number">10+</span>
+                <span className="stat-number">{years}{yearsSuffix}</span>
                 <span className="title-bar--sm">Years Running</span>
               </div>
             </div>
