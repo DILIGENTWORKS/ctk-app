@@ -1,4 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { BASE_TITLE, keywordsContent } from '../seo';
 
 export default function Home() {
   // Images are served from Vite publicDir (src/assets) at root path
@@ -58,6 +60,12 @@ export default function Home() {
 
   return (
     <div>
+      <Helmet>
+        <title>Home | {BASE_TITLE}</title>
+        <meta name="description" content="Croydon Tamizh Kazhagam (CTK) – Croydon Tamil School in the UK promoting Tamil language and culture with classes, events, and community activities." />
+        <meta name="keywords" content={keywordsContent(['Home'])} />
+        <link rel="canonical" href="https://croydontamizhkazhagam.org.uk/" />
+      </Helmet>
       <section
         className="hero"
         aria-label="Welcome image slider"

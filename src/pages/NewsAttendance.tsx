@@ -1,8 +1,16 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
+import { BASE_TITLE, keywordsContent } from '../seo';
 
 export default function NewsAttendance() {
   return (
     <div className="container section">
+      <Helmet>
+        <title>Attendance Guideline | {BASE_TITLE}</title>
+        <meta name="description" content="CTK Attendance Guideline – recommended attendance for students at Croydon Tamil School (Croydon Tamizh Kazhagam)." />
+        <meta name="keywords" content={keywordsContent(['Attendance', 'Tamil Students in UK'])} />
+        <link rel="canonical" href="https://croydontamizhkazhagam.org.uk/news-events/attendance-guideline" />
+      </Helmet>
       <h2 className="title-bar">Attendance Guideline</h2>
       <p>UK school guidelines recommends that each student should meet a minimum attendance criteria, which is 85%. In CTK, the attendance criteria is minimum 75%.</p>
       <p>Over the past few years, one of our observations on the exam result has been that the students who are regular to school usually achieve the best results.</p>

@@ -1,8 +1,16 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
+import { BASE_TITLE, keywordsContent } from '../seo';
 
 export default function AboutHistory() {
   return (
     <div className="container section">
+      <Helmet>
+        <title>Our History | {BASE_TITLE}</title>
+        <meta name="description" content="History of Croydon Tamizh Kazhagam (CTK) – Croydon Tamil School. Our origins, growth, and commitment to Tamil education in the UK." />
+        <meta name="keywords" content={keywordsContent(['Our History', 'Croydon Tamil School', 'Tamil Sangam UK'])} />
+        <link rel="canonical" href="https://croydontamizhkazhagam.org.uk/about/history" />
+      </Helmet>
       <h2 className="title-bar">Our History</h2>
       <h3>Founded</h3>
       <p>

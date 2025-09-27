@@ -1,8 +1,16 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
+import { BASE_TITLE, keywordsContent } from '../seo';
 
 export default function AboutFees() {
   return (
     <div className="container section">
+      <Helmet>
+        <title>Fees & Payments | {BASE_TITLE}</title>
+        <meta name="description" content="CTK Fees & Payments – term fees and book price for Croydon Tamil School (Croydon Tamizh Kazhagam) in the UK." />
+        <meta name="keywords" content={keywordsContent(['Fees', 'Payments', 'Tamil School UK'])} />
+        <link rel="canonical" href="https://croydontamizhkazhagam.org.uk/about/fees" />
+      </Helmet>
       <h2 className="title-bar">Fees & Payments</h2>
       <h3>Basic fees for a Term</h3>
       <ul>

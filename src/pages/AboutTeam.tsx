@@ -1,4 +1,6 @@
 import React, { useMemo, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { BASE_TITLE, keywordsContent } from '../seo';
 import { categories as allCategories, members as teamMembers, Member } from './teamData';
 
 export default function AboutTeam() {
@@ -22,6 +24,12 @@ export default function AboutTeam() {
 
   return (
     <div className="container section">
+      <Helmet>
+        <title>Meet the Team | {BASE_TITLE}</title>
+        <meta name="description" content="CTK Team – Trustees, teachers, events team, admin and IT at Croydon Tamil School (Croydon Tamizh Kazhagam)." />
+        <meta name="keywords" content={keywordsContent(['Tamil Teachers', 'Board of Trustees', 'CTK Team'])} />
+        <link rel="canonical" href="https://croydontamizhkazhagam.org.uk/about/team" />
+      </Helmet>
       <h2 className="title-bar">Meet the Team</h2>
 
       {/* Category Filters */}

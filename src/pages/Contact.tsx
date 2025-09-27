@@ -1,4 +1,6 @@
 import React, { useMemo, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { BASE_TITLE, keywordsContent } from '../seo';
 
 export default function Contact() {
   const [name, setName] = useState('');
@@ -7,6 +9,10 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // Track field interaction
+  const [touchedName, setTouchedName] = useState(false);
+  const [touchedEmail, setTouchedEmail] = useState(false);
+  const [touchedMessage, setTouchedMessage] = useState(false);
 
   const emailValid = useMemo(() => {
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -39,9 +45,18 @@ export default function Contact() {
   const nameInvalid = !name.trim();
   const emailInvalid = !emailValid;
   const messageInvalid = !message.trim() || message.length > 1000;
+  const showNameError = (touchedName || submitted) && nameInvalid;
+  const showEmailError = (touchedEmail || submitted) && emailInvalid;
+  const showMessageError = (touchedMessage || submitted) && messageInvalid;
 
   return (
     <div className="container section">
+      <Helmet>
+        <title>Contact Us | {BASE_TITLE}</title>
+        <meta name="description" content="Contact CTK – Croydon Tamil School (Croydon Tamizh Kazhagam). Get in touch, registered address, and school location." />
+        <meta name="keywords" content={keywordsContent(['Contact', 'Croydon Tamil School'])} />
+        <link rel="canonical" href="https://croydontamizhkazhagam.org.uk/contact" />
+      </Helmet>
       <h2 className="title-bar">Contact Us</h2>
       <div className="contact-grid">
         {/* Left: Contact form */}
@@ -53,10 +68,11 @@ export default function Contact() {
               placeholder="Your name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className={nameInvalid ? 'invalid' : ''}
+              onBlur={() => setTouchedName(true)}
+              className={showNameError ? 'invalid' : ''}
               required
             />
-            {nameInvalid && <div className="hint">Name is required.</div>}
+            {showNameError && <div className="hint">Name is required.</div>}
 
             <input
               name="email"
@@ -66,11 +82,12 @@ export default function Contact() {
               autoComplete="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={emailInvalid ? 'invalid' : ''}
+              onBlur={() => setTouchedEmail(true)}
+              className={showEmailError ? 'invalid' : ''}
               required
               aria-describedby="emailHint"
             />
-            {emailInvalid && (
+            {showEmailError && (
               <div id="emailHint" className="hint">
                 Please enter a valid email address (e.g., name@example.com).
               </div>
@@ -83,10 +100,11 @@ export default function Contact() {
               maxLength={1000}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className={messageInvalid ? 'invalid' : ''}
+              onBlur={() => setTouchedMessage(true)}
+              className={showMessageError ? 'invalid' : ''}
               required
             />
-            {messageInvalid && (
+            {showMessageError && (
               <div className="hint">
                 Message is required and must be at most 1000 characters.
               </div>

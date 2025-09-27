@@ -1,8 +1,16 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
+import { BASE_TITLE, keywordsContent } from '../seo';
 
 export default function NewsEvents() {
   return (
     <div className="container section">
+      <Helmet>
+        <title>News & Events | {BASE_TITLE}</title>
+        <meta name="description" content="CTK News & Events – Tamil events, term dates, competitions and community updates at Croydon Tamil School." />
+        <meta name="keywords" content={keywordsContent(['Tamil Events', 'Croydon Tamil Sangam', 'Croydon Tamil 10 years'])} />
+        <link rel="canonical" href="https://croydontamizhkazhagam.org.uk/news-events" />
+      </Helmet>
       <h2 className="title-bar">CTK 10th Anniversary Event</h2>
 
       <h3>Dear Friends,</h3>
