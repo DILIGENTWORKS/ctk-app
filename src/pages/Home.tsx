@@ -140,7 +140,7 @@ export default function Home() {
                 </svg>
               </div>
               <div className="stat-right">
-                <span className="stat-number">200+</span>
+                <span className="stat-number">130</span>
                 <span className="title-bar--sm">Students</span>
               </div>
             </div>
@@ -154,7 +154,7 @@ export default function Home() {
                 </svg>
               </div>
               <div className="stat-right">
-                <span className="stat-number">20+</span>
+                <span className="stat-number">20</span>
                 <span className="title-bar--sm">Teachers</span>
               </div>
             </div>
@@ -168,7 +168,7 @@ export default function Home() {
                 </svg>
               </div>
               <div className="stat-right">
-                <span className="stat-number">5+</span>
+                <span className="stat-number">10+</span>
                 <span className="title-bar--sm">Years Running</span>
               </div>
             </div>

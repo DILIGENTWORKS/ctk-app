@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink, Route, Routes } from 'react-router-dom';
+import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import AboutHistory from './pages/AboutHistory';
@@ -13,10 +13,12 @@ import NewsAttendance from './pages/NewsAttendance';
 import NewsEvents from './pages/NewsEvents';
 
 function App() {
+  const location = useLocation();
+  const isHome = location.pathname === '/';
   const year = new Date().getFullYear();
   return (
     <div>
-      <header className="header">
+      <header className={`header${isHome ? ' header--square' : ''}`}>
         <nav className="navbar">
           <Link className="logo" to="/" aria-label="CTK Home">
             <span className="logo-wrap">

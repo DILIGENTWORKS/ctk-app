@@ -14,7 +14,9 @@ a:hover { text-decoration: underline; }
   position: sticky; top: 0; z-index: 1000; background: #12233a; /* full-bleed blue like footer sides */
 }
 .header::before, .header::after { display: none; }
-.navbar { max-width: 1240px; margin: 0 auto; padding: 0.75rem 1rem; display: flex; align-items: center; justify-content: space-between; background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.navbar { max-width: 1240px; margin: 0 auto; padding: 0.75rem 1rem; display: flex; align-items: center; justify-content: space-between; background: #fff; border: 1px solid #e5e7eb; border-radius: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+/* Square header bar on Home page */
+.header--square .navbar { border-radius: 0; }
 .logo { font-weight: 700; color: var(--ctk-blue); letter-spacing: .5px; }
 .logo-img { height: 100px; width: auto; display: block; }
 .logo-wrap { display: inline-flex; align-items: center; gap: 12px; }

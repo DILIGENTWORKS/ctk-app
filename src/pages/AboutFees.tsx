@@ -10,7 +10,20 @@ export default function AboutFees() {
         <li>Term fees payment for 2 kids: £70</li>
         <li>Book Price: £7</li>
       </ul>
-      <p>Fees and details adapted from the official CTK website.</p>
+      <p>
+        Please reach out to the treasurer for more details
+        {' '}
+        <a
+          href="mailto:info@croydontamizhkazhagam.org.uk"
+          onClick={(e) => {
+            // Some dev environments may intercept anchor clicks; force navigation
+            e.preventDefault();
+            window.location.href = 'mailto:info@croydontamizhkazhagam.org.uk';
+          }}
+        >
+          info@croydontamizhkazhagam.org.uk
+        </a>
+      </p>
     </div>
   );
 }
