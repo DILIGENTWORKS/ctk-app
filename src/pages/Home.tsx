@@ -134,7 +134,12 @@ export default function Home() {
             <div className="aside-card paypal-card">
               <h3 className="title-bar">Pay or Donate</h3>
               <div className="paypal-inner">
-                <a href="https://www.paypal.com/donate" target="_blank" rel="noopener" aria-label="Donate via PayPal">
+                <a
+                  href="https://www.paypal.com/donate?business=croydon.tamizh@gmail.com&no_recurring=0&currency_code=GBP&source=url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Donate via PayPal"
+                >
                   <img className="paypal-img" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donateCC_LG.gif" alt="Donate with PayPal button" />
                 </a>
               </div>

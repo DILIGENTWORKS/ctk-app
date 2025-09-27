@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom';
+import { Link, NavLink, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import AboutHistory from './pages/AboutHistory';
@@ -14,20 +14,20 @@ import NewsEvents from './pages/NewsEvents';
 
 function App() {
   const location = useLocation();
-  const isHome = location.pathname === '/';
+  const isHome = location.pathname === '/home';
   const year = new Date().getFullYear();
   return (
     <div>
       <header className={`header${isHome ? ' header--square' : ''}`}>
         <nav className="navbar">
-          <Link className="logo" to="/" aria-label="CTK Home">
+          <Link className="logo" to="/home" aria-label="CTK Home">
             <span className="logo-wrap">
               <img src="/ctk/logo/CTKLOGO.jpg" alt="Croydon Tamizh Kazhagam" className="logo-img" />
               <span className="logo-text">CROYDON TAMIZH KAZHAGAM</span>
             </span>
           </Link>
           <div className="menu">
-            <NavLink to="/" end>Home</NavLink>
+            <NavLink to="/home" end>Home</NavLink>
             <div className="dropdown">
               <NavLink className="dropbtn" to="/about">About Us</NavLink>
               <div className="dropdown-menu" role="menu">
@@ -53,7 +53,8 @@ function App() {
 
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Navigate to="/home" replace />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/about/history" element={<AboutHistory />} />
           <Route path="/about/team" element={<AboutTeam />} />
