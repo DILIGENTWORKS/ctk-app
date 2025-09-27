@@ -11,12 +11,11 @@ export default function NewsEvents() {
         <meta name="keywords" content={keywordsContent(['Tamil Events', 'Croydon Tamil Sangam', 'Croydon Tamil 10 years'])} />
         <link rel="canonical" href="https://croydontamizhkazhagam.org.uk/news-events" />
       </Helmet>
-      <h2 className="title-bar">CTK 10th Anniversary Event</h2>
+      <h2 className="title-bar">CTK Events</h2>
 
       <h3>Dear Friends,</h3>
       <p><strong>Celebrating a Decade of Excellence</strong></p>
       <p>
-        This year is particularly special for all of us, as we celebrate the 10th anniversary of our Tamil school!
         Over the past decade, we have witnessed remarkable growth and development in our students, thanks to your
         unwavering support and commitment to our mission.
       </p>
@@ -28,15 +27,12 @@ export default function NewsEvents() {
         their success.
       </p>
       <p>
-        We are equally excited to announce that, in celebration of our school's 10th anniversary, we will be conducting
-        competitions in <em>Super Singer</em>, <em>Short Film</em>, and <em>Shorts</em>.
+        Our next upcoming event is our <strong>Deepavali Event</strong> on <strong>26th October 2025</strong>.
+        This will be a fun-filled entertainment with songs, dance performances, stage plays, and more. We
+        encourage all parents to support their children in participating and to join us in celebrating this
+        exciting occasion together.
       </p>
-      <p>
-        These events aim to showcase the talents of our students and foster a sense of community and creativity. We
-        encourage all parents to support their children in participating and to join us in celebrating this significant
-        milestone in our school's journey.
-      </p>
-      <p><em>Further details regarding dates and registration will be shared soon.</em></p>
+      <p><em>Further details regarding timings and registrations will be shared soon.</em></p>
     </div>
   );
 }
