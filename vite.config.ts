@@ -6,7 +6,6 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
-    open: true,
     proxy: {
       // Mirror Angular's proxy.conf.json to backend at 8080
       '/api': {
