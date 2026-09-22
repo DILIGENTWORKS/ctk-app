@@ -16,6 +16,11 @@ export default defineConfig({
       },
     },
   },
+   preview: {
+    allowedHosts: [
+      '.railway.app'  // Optional: allows all Railway subdomains
+    ]
+  },
   publicDir: 'src/assets',
   build: {
     outDir: 'dist/ctk-web'
